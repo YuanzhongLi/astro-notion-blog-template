@@ -1,0 +1,34 @@
+---
+import { type Block, type RichText } from '../../lib/interfaces';
+import { snakeToKebab } from '../../lib/style-helpers';
+import RichTextComponent from './RichText.astro';
+import NotionBlocksComponent from '../NotionBlocks.astro';
+import '../../styles/notion-color.css';
+
+export interface Props {
+  block: Block
+  headings: Block[]
+}
+
+const { block, headings } = Astro.props;
+---
+<p class={snakeToKebab(block.Paragraph.Color)}>
+  {
+    block.Paragraph.RichTexts.map((richText: RichText) => (
+      <RichTextComponent richText={richText} />
+    ))
+  }
+  {
+    block.Paragraph.Children && (
+      <NotionBlocksComponent blocks={block.Paragraph.Children} headings={headings} />
+    )
+  }
+</p>
+
+<style>
+  p {
+    margin: 0.3rem 0;
+    font-size: 1rem;
+    min-height: 1.8rem;
+  }
+</style>

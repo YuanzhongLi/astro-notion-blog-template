@@ -1,0 +1,27 @@
+name: Lint
+
+on:
+  # push:
+  #   branches:
+  deployment:
+    branches:
+      - main
+
+permissions:
+  checks: write
+  contents: write
+
+jobs:
+  lint:
+    name: ESLint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: Install packages
+        run: npm install
+
+      - name: Run lint
+        run: npm run lint:fix

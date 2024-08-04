@@ -1,0 +1,57 @@
+---
+import type { Block, RichText } from '../../lib/interfaces';
+import { snakeToKebab } from '../../lib/style-helpers';
+import RichTextComponent from './RichText.astro';
+import NotionBlocks from '../NotionBlocks.astro';
+import '../../styles/notion-color.css';
+
+export interface Props {
+  block: Block
+  level: number
+  headings: Block[]
+}
+
+const { block, level, headings } = Astro.props;
+
+const listTypes = ['square', 'disc', 'circle'];
+---
+
+<ul class={listTypes[level % 3]}>
+  {
+    block.ListItems?.filter(
+      (b: Block) => b.Type === 'bulleted_list_item',
+    ).map((b: Block) => (
+      <li class={snakeToKebab(b.BulletedListItem?.Color as string)}>
+        {b.BulletedListItem?.RichTexts.map((richText: RichText) => (
+          <RichTextComponent richText={richText} />
+        ))}
+        {b.HasChildren && (
+          <NotionBlocks
+            isRoot={false}
+            blocks={b.BulletedListItem?.Children as Block[]}
+            level={level + 1}
+            headings={headings}
+          />
+        )}
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    font-size: 1rem;
+  }
+
+  .disc {
+    list-style-type: disc;
+  }
+
+  .circle {
+    list-style-type: circle;
+  }
+
+  .square {
+    list-style-type: square;
+  }
+</style>

@@ -1,0 +1,57 @@
+---
+import type { Block, RichText } from '../../lib/interfaces';
+import { snakeToKebab } from '../../lib/style-helpers';
+import RichTextComponent from './RichText.astro';
+import NotionBlocks from '../NotionBlocks.astro';
+import '../../styles/notion-color.css';
+
+export interface Props {
+  block: Block
+  level: number
+  headings: Block[]
+}
+
+const { block, level, headings } = Astro.props;
+
+const listTypes = ['lower-roman', 'decimal', 'lower-alpha'];
+---
+
+<ol class={listTypes[level % 3]}>
+  {
+    block.ListItems?.filter(
+      (b: Block) => b.Type === 'numbered_list_item',
+    ).map((b: Block) => (
+      <li class={snakeToKebab(b.NumberedListItem?.Color as string)}>
+        {b.NumberedListItem?.RichTexts.map((richText: RichText) => (
+          <RichTextComponent richText={richText} />
+        ))}
+        {b.HasChildren && (
+          <NotionBlocks
+            isRoot={false}
+            blocks={b.NumberedListItem?.Children as Block[]}
+            level={level + 1}
+            headings={headings}
+          />
+        )}
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  ol {
+    font-size: 1rem;
+  }
+
+  .decimal {
+    list-style-type: decimal;
+  }
+
+  .lower-alpha {
+    list-style-type: lower-alpha;
+  }
+
+  .lower-roman {
+    list-style-type: lower-roman;
+  }
+</style>

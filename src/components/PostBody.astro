@@ -1,0 +1,20 @@
+---
+import { type Block } from '../lib/interfaces';
+import NotionBlocksAstro from './NotionBlocks.astro';
+
+export interface Props {
+  blocks: Block[]
+}
+
+const { blocks } = Astro.props;
+---
+
+<div class="post-body">
+  <NotionBlocksAstro blocks={blocks} isRoot={true} level={1} headings={[]}/>
+</div>
+
+<style>
+  .post-body {
+    padding: 0.5rem 0;
+  }
+</style>

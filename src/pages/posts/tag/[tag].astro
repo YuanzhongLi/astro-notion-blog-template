@@ -1,0 +1,48 @@
+---
+import type { SelectProperty } from '../../../lib/interfaces';
+import { NUMBER_OF_POSTS_PER_PAGE } from '../../../server-constants';
+import {
+  getPostsByTag,
+  getAllTags,
+  getNumberOfPagesByTag,
+} from '../../../lib/notion/client';
+import Layout from '../../../layouts/Layout.astro';
+import TagCover from '../../../components/Cover/TagCover.astro';
+import BlogSections from '../../../components/BlogSections/BlogSections.astro';
+import Pagination from '../../../components/Pagination.astro';
+
+import '../../../styles/notion-color.css';
+
+export async function getStaticPaths() {
+  const allTags = await getAllTags();
+  return allTags.map((tag: SelectProperty) => ({ params: { tag: tag.name } }));
+}
+
+const { tag } = Astro.params;
+
+const [posts, numberOfPages] = await Promise.all([
+  getPostsByTag(tag, NUMBER_OF_POSTS_PER_PAGE),
+  getNumberOfPagesByTag(tag),
+]);
+---
+
+<Layout
+  title={`Posts in ${tag}`}
+  description=''
+  path={`/posts/tag/${tag}`}
+  ogImage=''
+>
+  <div
+    slot="main"
+    class="size-full md:w-[80vw] lg:w-[70vw]
+      flex flex-col mx-auto"
+  >
+    <TagCover category={tag} />
+    <BlogSections posts={posts} />
+    <Pagination
+      currentPage={1}
+      numberOfPages={numberOfPages}
+      tag={tag}
+    />
+  </div>
+</Layout>
