@@ -1,15 +1,31 @@
 ---
 import SpeechBubble from './SpeechBubble.astro';
 import icon from '../../images/my_icon.svg';
+
+export interface Props {
+  iconSrc: string;
+  coverSrc: string;
+  messages: string[];
+}
+
+
+const {
+  iconSrc = icon ? icon.src : "",
+  coverSrc = "",
+  messages = ["Welcome to My Website!"],
+} = Astro.props;
+
+const bgUrlClass = coverSrc === "" ? "bg-[url('/src/images/home-cover.webp')] bg-no-repeat block w-full bg-fill bg-cover" : "";
 ---
 <div
-  class="home-cover bg-[url('/src/images/home-cover.webp')] bg-no-repeat block w-full bg-fill bg-cover relative"
+  class=`home-cover relative ${bgUrlClass}`
 >
   <!-- 背景画像を白くする -->
   <div
     class="absolute size-full overflow-hidden bg-fixed"
     style="background-color: rgba(255, 255, 255, 0.4)"
   >
+    <img src={coverSrc}>
   </div>
 
   <!-- アイコン -->
@@ -18,9 +34,10 @@ import icon from '../../images/my_icon.svg';
   >
     <img
       class="rounded-full border border-gray-100 shadow-lg object-cover w-full h-full"
-      src={icon.src}
+      src={iconSrc}
       loading="lazy"
       alt="Home Cover Image"
+      style="background-color: rgba(255, 255, 255)"
     />
     <div class="absolute top-0 right-0 h-4 w-4 my-1 border-2 border-white rounded-full bg-green-400 z-2">
     </div>
@@ -30,7 +47,7 @@ import icon from '../../images/my_icon.svg';
   <div
     class="absolute top-0 left-0 right-0 bottom-0 w-[70%] h-1/2 ml-20 mt-16 sm:ml-[7rem]"
   >
-    {<SpeechBubble />}
+    {<SpeechBubble messages={messages} />}
   </div>
 </div>
 

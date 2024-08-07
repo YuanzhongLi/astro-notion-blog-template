@@ -25,6 +25,7 @@ const categories: string[] = await getAllTags()
   .then((tags) => tags.map((tag) => tag.name));
 
 const siteTitle = title ? `${title} - ${database.Title}` : database.Title;
+const siteName = database.Title;
 const siteDescription = description || database.Description;
 const siteURL = new URL(getNavLink(path), Astro.site).toString();
 const siteOGImage = new URL(
@@ -66,11 +67,11 @@ const siteOGImage = new URL(
 
   <body>
     <GoogleAnalytics trackingId={PUBLIC_GA_TRACKING_ID} />
-    <Header categories={categories}/>
+    <Header categories={categories} siteName={siteName} />
 
     <slot name="main" />
 
-    <Footer />
+    <Footer siteName={siteName} />
     <SearchModal />
     {<script src={getStaticFilePath('/scripts/fslightbox.js')} />}
   </body>
