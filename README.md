@@ -1,11 +1,11 @@
 English | [日本語](README.ja.md)
 
-# zhong-notion-blog
-[![GitHub stars](https://img.shields.io/github/stars/YuanzhongLi/zhong-notion-blog)](https://github.com/YuanzhongLi/zhong-notion-blog/stargazers)
+# astro-notion-blog-template
+[![GitHub stars](https://img.shields.io/github/stars/YuanzhongLi/astro-notion-blog-template)](https://github.com/YuanzhongLi/astro-notion-blog-template/stargazers)
 
 <img src="/public/default-og-image.png" width="480">
 
-zhong-notion-blog is forked from **[astro-notion-blog](https://github.com/otoyo/astro-notion-blog)**.
+astro-notion-blog-template is forked from **[astro-notion-blog](https://github.com/otoyo/astro-notion-blog)**.
 enables you to create a blog using [Notion](https://www.notion.so/) and generates it statically, resulting in lightning-fast page views.
 
 - :rocket: **Blazing fast** page views
@@ -29,7 +29,7 @@ For the details, please refer [astro-notion-blog](https://github.com/otoyo/astro
 <img src="/README/Mobile_image.png" width="300">
 
 ## :globe_with_meridians: Production
-[https://zhong-blog.pages.dev](https://zhong-blog.pages.dev)
+<!-- [https://zhong-blog.pages.dev](https://zhong-blog.pages.dev) -->
 
 ## :motor_scooter: Quick Start
 

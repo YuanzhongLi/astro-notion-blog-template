@@ -1,11 +1,11 @@
 [English](README.md) | 日本語
 
 # astro-notion-blog
-[![GitHub stars](https://img.shields.io/github/stars/YuanzhongLi/zhong-notion-blog)](https://github.com/YuanzhongLi/zhong-notion-blog/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/YuanzhongLi/astro-notion-blog-template)](https://github.com/YuanzhongLi/astro-notion-blog-template/stargazers)
 
 <img src="/public/default-og-image.png" width="480">
 
-zhong-notion-blogは**[astro-notion-blog](https://github.com/otoyo/astro-notion-blog)**をforkし、UIなどを独自にカスタマイズしたものです。  
+astro-notion-blog-templateは**[astro-notion-blog](https://github.com/otoyo/astro-notion-blog)**をforkし、UIなどを独自にカスタマイズしたものです。  
 使えば [Notion](https://www.notion.so) で書けるブログを作ることができます。  
 ブログは [Astro](https://astro.build/) を使って静的生成されるので非常に高速です。
 
@@ -29,7 +29,7 @@ zhong-notion-blogは**[astro-notion-blog](https://github.com/otoyo/astro-notion-
 <img src="/README/Mobile_image.png" width="300">
 
 ## :globe_with_meridians: 本番環境
-[https://zhong-blog.pages.dev](https://zhong-blog.pages.dev)
+<!-- [https://zhong-blog.pages.dev](https://zhong-blog.pages.dev) -->
 
 ## :motor_scooter: クイックスタート
 
