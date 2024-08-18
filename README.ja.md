@@ -29,7 +29,7 @@ astro-notion-blog-templateは**[astro-notion-blog](https://github.com/otoyo/astr
 <img src="/README/Mobile_image.png" width="300">
 
 ## :globe_with_meridians: 本番環境
-<!-- [https://zhong-blog.pages.dev](https://zhong-blog.pages.dev) -->
+[astro-notion-blog-template.pages.dev](https://astro-notion-blog-template.pages.dev/)
 
 ## :motor_scooter: クイックスタート
 
