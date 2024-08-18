@@ -29,7 +29,7 @@ For the details, please refer [astro-notion-blog](https://github.com/otoyo/astro
 <img src="/README/Mobile_image.png" width="300">
 
 ## :globe_with_meridians: Production
-<!-- [https://zhong-blog.pages.dev](https://zhong-blog.pages.dev) -->
+[astro-notion-blog-template.pages.dev](https://astro-notion-blog-template.pages.dev/)
 
 ## :motor_scooter: Quick Start
 
