@@ -8,7 +8,6 @@ export interface Props {
   messages: string[];
 }
 
-
 const {
   iconSrc = icon ? icon.src : "",
   coverSrc = "",
@@ -34,7 +33,7 @@ const bgUrlClass = coverSrc === "" ? "bg-[url('/src/images/home-cover.webp')] bg
   >
     <img
       class="rounded-full border border-gray-100 shadow-lg object-cover w-full h-full"
-      src={iconSrc}
+      src={icon.src}
       loading="lazy"
       alt="Home Cover Image"
       style="background-color: rgba(255, 255, 255)"
